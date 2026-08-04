@@ -12,6 +12,7 @@ CREATE TABLE "public"."User" (
     "password" TEXT NOT NULL,
     "role" "public"."Role" NOT NULL DEFAULT 'STAFF',
     "isActive" BOOLEAN NOT NULL DEFAULT true,
+    "refreshToken" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
