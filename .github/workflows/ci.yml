@@ -68,6 +68,8 @@ jobs:
 
       - name: Build frontend
         run: npm run build
+        env:
+          NEXT_PUBLIC_API_URL: http://16.112.26.58:3001/api
 
   docker-build:
     name: Docker Build and Push
@@ -108,6 +110,8 @@ jobs:
           context: ./frontend
           file: ./frontend/Dockerfile
           push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+          build-args: |
+            NEXT_PUBLIC_API_URL=http://16.112.26.58:3001/api
           tags: |
             ghcr.io/tejasnayak24/stockpilot-frontend:latest
             ghcr.io/tejasnayak24/stockpilot-frontend:${{ github.sha }}
